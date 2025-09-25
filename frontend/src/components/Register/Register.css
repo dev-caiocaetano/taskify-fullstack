@@ -1,0 +1,76 @@
+.registerFormDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.nameInput,
+.lastNameInput,
+.registerEmailInput,
+.registerPasswordInput {
+  width: 200px;
+  height: 25px;
+  padding-left: 5px;
+  border: solid 1px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.registerEmailInput{
+  margin-right: 2px;
+}
+
+.divPassword {
+  margin-left: 36px;
+}
+
+.divBirthDate {
+  margin-right: 22px;
+}
+
+.divButton {
+ margin-left: 90px;
+}
+
+.birthDateInput {
+  text-align: center;
+  width: 120px;
+  height: 25px;
+  padding-left: 5px;
+  border: solid 1px;
+  border-radius: 5px;
+}
+
+.allInputs {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.inputDiv1,
+.inputDiv2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.registerButton {
+  height: 25px;
+  width: 100px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+.registerButton:hover {
+  background-color: #004186;
+}

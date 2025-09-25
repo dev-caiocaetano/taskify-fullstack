@@ -1,0 +1,14 @@
+# Dependências do Node (MUITO IMPORTANTE)
+backend/node_modules
+frontend/node_modules
+
+# Arquivo de variáveis de ambiente do Backend (SEGURANÇA CRÍTICA)
+backend/.env
+
+# Arquivos de build do Frontend (se aplicável no futuro)
+frontend/dist
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

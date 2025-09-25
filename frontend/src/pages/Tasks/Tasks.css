@@ -1,0 +1,28 @@
+
+
+.main {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.headerTasks {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 30px;
+  padding: 0 50px;
+  margin-top: 10px;
+}
+
+.logoutButton {
+  background-color: #ff2424;
+
+}
+
+.logoutButton:hover {
+  background-color: #7a0000;
+}
