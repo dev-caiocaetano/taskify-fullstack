@@ -101,7 +101,9 @@ The frontend will be running on `http://localhost:5173` and the backend on `http
 
 ---
 <br>
-#versao-em-portugues
+
+## Versao em Portugues
+*Abaixo, a versão em português do README.*
 
 # Taskify 🚀
 
