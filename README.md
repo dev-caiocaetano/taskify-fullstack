@@ -1,4 +1,4 @@
-[Ler em Português/Read in Portuguese](#versão-em-português)
+[Ler em Português/Read in Portuguese](#versao-em-portugues)
 
 # Taskify 🚀
 
@@ -101,7 +101,7 @@ The frontend will be running on `http://localhost:5173` and the backend on `http
 
 ---
 <br>
-#versão-em-português
+#versao-em-portugues
 
 # Taskify 🚀
 
