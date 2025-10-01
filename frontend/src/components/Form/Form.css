@@ -1,65 +1,78 @@
-.formDiv {
-    border-bottom: solid 1px #ddd;
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fff;
+  margin-bottom: 16px;
 }
 
-.inputDiv, .priorityDiv,
-.statusDiv, .dueDateDiv {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.form-container select.form-control {
+  appearance: auto;
 }
 
-.form {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.inputTask {
-    width: 300px;
-    height: 25px;
-    padding-left: 5px;
-    border: solid 1px;
-    border-radius: 5px;
+.form-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #555;
 }
 
-.prioritySelect {
-    width: 70px;
-    height: 25px;
-    border: solid 1px;
-    border-radius: 5px;
+.form-control {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 1rem;
 }
 
-.statusSelect {
-    height: 25px;
-    border: solid 1px;
-    border-radius: 5px;
+.form-button {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 15px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  margin-top: 5px;
 }
 
-.dueDateSelect {
-    width: 100px;
-    height: 25px;
-    border: solid 1px;
-    border-radius: 5px;
+.form-button:hover {
+  background-color: #0056b3;
 }
 
-.submitButton {
-    height: 25px;
-    width: 60px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 24px;
-}
 
-.submitButton:hover {
-    background-color: #004186;
-}
+@media (min-width: 992px) {
+  .main-form-container {
+    padding: 0px 150px;
+  }
 
-.formLabel {
-    font-size: 12px;
-    margin-bottom: 10px;
-}
+  .form-container {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 12px;
+  }
 
+  .form-group {
+    flex: 1;
+  }
+
+  .description-group {
+    flex: 3;
+  }
+
+  .form-button {
+    flex-shrink: 0;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+
+  }
+}

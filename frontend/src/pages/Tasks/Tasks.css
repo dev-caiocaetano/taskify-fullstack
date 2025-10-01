@@ -1,28 +1,30 @@
-
-
-.main {
-  max-width: 700px;
-  margin: 30px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-}
-
-.headerTasks {
+.tasks-header{
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
   align-items: center;
-  gap: 30px;
-  padding: 0 50px;
-  margin-top: 10px;
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 24px;
 }
 
-.logoutButton {
-  background-color: #ff2424;
-
+.tasks-header-greeting {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
 }
 
-.logoutButton:hover {
-  background-color: #7a0000;
+.tasks-header-logout-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.tasks-header-logout-button:hover {
+  background-color: #c82333;
 }

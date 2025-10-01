@@ -1,13 +1,16 @@
 import { useState, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../contexts/AuthContext.jsx';
-import Logotype from '../../components/Logotype/index';
+import Logotype from '../../components/Logotype/index.jsx';
 import LoginPage from '../../components/Login/index.jsx'
+import HomePageLink from "../../components/LinkHomePage/index.jsx";
+import { toast } from 'react-hot-toast';
 
 export default function Login() {
   const authLogin = useContext(AuthContext);
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState({ email: '', password: '' });
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -30,10 +33,11 @@ export default function Login() {
         body: JSON.stringify(loginData)
       });
 
-      const messageData = await loginResponse.json()
+      const messageData = await loginResponse.json();
 
       if (!loginResponse.ok) {
-        return alert(messageData.message);
+        toast.error(messageData.message);
+        return;
       }
 
       authLogin.handleLogin(messageData.user, messageData.token);
@@ -41,16 +45,23 @@ export default function Login() {
 
     } catch (error) {
       console.error(error);
-      alert('Ocorreu um erro de conexão. Tente novamente.')
+      toast.error('Ocorreu um erro de conexão. Tente novamente.');
     };
   };
+
+  const handleToggleShowPassword = () => {
+    setShowPassword(currentState => !currentState);
+  }
   return (
     <div>
+      <HomePageLink />
       <Logotype />
       <LoginPage
         loginData={loginData}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
+        showPassword={showPassword}
+        handleToggleShowPassword={handleToggleShowPassword}
       />
     </div>
   );

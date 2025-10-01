@@ -1,76 +1,91 @@
-.registerFormDiv {
+.register-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 700px;
-  margin: 30px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  padding: 0px 24px 24px;
+  max-width: 600px;
+  margin: 0px auto;
+  border-radius: 12px;
 }
 
-.nameInput,
-.lastNameInput,
-.registerEmailInput,
-.registerPasswordInput {
-  width: 200px;
-  height: 25px;
-  padding-left: 5px;
-  border: solid 1px;
-  border-radius: 5px;
+.register-container h2 {
+  margin-top: 5px;
   margin-bottom: 10px;
 }
 
-.registerEmailInput{
-  margin-right: 2px;
-}
 
-.divPassword {
-  margin-left: 36px;
-}
-
-.divBirthDate {
-  margin-right: 22px;
-}
-
-.divButton {
- margin-left: 90px;
-}
-
-.birthDateInput {
-  text-align: center;
-  width: 120px;
-  height: 25px;
-  padding-left: 5px;
-  border: solid 1px;
-  border-radius: 5px;
-}
-
-.allInputs {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-}
-
-.inputDiv1,
-.inputDiv2 {
+.register-form {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 16px;
 }
 
-.registerButton {
-  height: 25px;
-  width: 100px;
-  background-color: #007bff;
-  color: white;
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-control {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.form-button {
+  padding: 12px 16px;
+  margin-top: 8px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
+  background-color: #28a745;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
-
+  transition: background-color 0.2s ease-in-out;
 }
 
-.registerButton:hover {
-  background-color: #004186;
+.form-button:hover {
+  background-color: #218838;
+}
+
+.show-password-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.register-links {
+  margin-top: 24px;
+  font-size: 0.9rem;
+}
+
+.register-links a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+
+  .register-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+
+  }
+
+  .full-width {
+    grid-column: 1 / -1;
+  }
 }

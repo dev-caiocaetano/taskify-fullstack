@@ -1,9 +1,11 @@
 import Logotype from '../../components/Logotype/index';
 import Form from '../../components/Form/index';
 import Tasks from '../../components/Tasks';
+import TaskFilter from '../../components/TaskFilter/index.jsx';
 import { useState, useEffect, useContext } from 'react';
 import AuthContext from '../../contexts/AuthContext.jsx';
 import './Tasks.css';
+import { toast } from 'react-hot-toast';
 
 function Taskify() {
   const { user, handleLogout } = useContext(AuthContext);
@@ -15,6 +17,9 @@ function Taskify() {
   });
   const [tasks, setTasks] = useState([]);
   const [editTask, setEditTask] = useState(null);
+  const [order, setOrder] = useState('createdAt-desc');
+  const [priorityFilter, setPriorityFilter] = useState('');
+  const [statusFilter, setStatusFilter] = useState('');
 
   useEffect(() => {
     async function fetchTasks() {
@@ -39,6 +44,7 @@ function Taskify() {
 
       } catch (error) {
         console.error('Erro ao buscar tarefas:', error);
+        toast.error('Não foi possível carregar as tarefas.')
       }
     };
     if (user) {
@@ -61,7 +67,7 @@ function Taskify() {
     event.preventDefault();
 
     const taskText = taskData.description.trim();
-    if (!taskText) return alert('Adicione uma tarefa para continuar.');
+    if (!taskText) return toast.error('Adicione uma tarefa para continuar.');
 
     if (editTask !== null) {
       try {
@@ -98,6 +104,7 @@ function Taskify() {
         });
       } catch (error) {
         console.error(error);
+        toast.error('Ops! Algo deu errado. Tente novamente em alguns instantes.')
       };
     } else {
       try {
@@ -128,7 +135,8 @@ function Taskify() {
         });
 
       } catch (error) {
-        console.error("Erro encontrado no handleSubmit:", error);
+        console.error('Erro encontrado no handleSubmit:', error);
+        editTask ? toast.error('Ocorreu um erro ao atualizar a tarefa.') : toast.error('Ocorreu um erro ao criar a nova tarefa.');
       };
     };
 
@@ -175,30 +183,68 @@ function Taskify() {
       }
     } catch (error) {
       console.error('Erro ao deletar tarefa:', error);
+      toast.error('Falha ao deletar a tarefa.')
     };
   };
 
+  const tasksToDisplay = tasks.filter(task => {
+    if (!statusFilter) {
+      return true;
+    }
+    return task.status === statusFilter;
+  })
+    .filter(task => {
+      if (!priorityFilter) {
+        return true;
+      }
+      return task.priority === priorityFilter;
+    })
+    .sort((a, b) => {
+      const [field, direction] = order.split('-');
+
+      if (direction === 'asc') {
+        if (field === 'dueDate') {
+          return new Date(a.dueDate) - new Date(b.dueDate);
+        }
+        return String(a[field]).localeCompare(b[field]);
+      } else {
+        if (field === 'dueDate') {
+          return new Date(b.dueDate) - new Date(a.dueDate);
+        }
+        return String(b[field]).localeCompare(a[field]);
+      }
+    });
+
   return (
     <>
-      <header className='headerTasks'>
-        <p>Olá, {user.name}</p>
-        <button onClick={handleLogout} type="button" className='logoutButton'>Sair</button>
-      </header>
       <div>
-        <Logotype />
-      </div>
-
-      <div className='main'>
-        <Form
-          handleSubmit={handleSubmit}
-          handleChange={handleChange}
-          taskData={taskData}
+        <header className='tasks-header'>
+          <p className='tasks-header-greeting'>Olá, {user.name}</p>
+          <button onClick={handleLogout} type="button" className="tasks-header-logout-button">Sair</button>
+        </header>
+        <div>
+          <Logotype />
+        </div>
+        <TaskFilter
+          orderValue={order}
+          onOrderChange={setOrder}
+          priorityValue={priorityFilter}
+          onPriorityChange={setPriorityFilter}
+          statusValue={statusFilter}
+          onStatusChange={setStatusFilter}
         />
-        <Tasks
-          tasks={tasks}
-          handleEdit={handleEdit}
-          handleDelete={handleDelete}
-        />
+        <div>
+          <Form
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            taskData={taskData}
+          />
+          <Tasks
+            tasks={tasksToDisplay}
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
+          />
+        </div>
       </div>
     </>
   );

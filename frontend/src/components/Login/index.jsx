@@ -4,41 +4,56 @@ import './Login.css';
 import Imagem1 from '../../assets/img1.jpg';
 
 
-export default function LoginPage({ handleChange, handleSubmit, loginData }) {
+export default function LoginPage({ handleChange, handleSubmit, loginData, showPassword, handleToggleShowPassword }) {
   return (
-    <div>
-      <div className='homeLinkDiv'>
-        <Link to='/' className='homeLink'>Página Inicial</Link>
-      </div>
-      <div className='loginFormDiv'>
-        <form onSubmit={handleSubmit} action="#" className='loginForm'>
-          <div>
-            <label>E-mail:</label>
+    <div className="login-page-container">
+      <div className="login-form-wrapper">
+
+        <form onSubmit={handleSubmit} action="#" className="login-form">
+          <div className="form-group">
+            <label htmlFor="email" className="form-label">E-mail:</label>
             <input
+              id="email"
               type="text"
               name="email"
               value={loginData.email}
               onChange={handleChange}
-              className='emailInput'
+              className="form-control"
             />
           </div>
-          <div>
-            <label>Senha:</label>
+
+          <div className="form-group">
+            <label htmlFor="password" className="form-label">Senha:</label>
             <input
-              type="password"
+              id="password"
+              type={showPassword ? 'text' : 'password'}
               name="password"
               value={loginData.password}
               onChange={handleChange}
-              className='passwordInput'
+              className="form-control"
             />
           </div>
-          <button type="submit">Entrar</button>
+
+          <div className="show-password-group">
+            <input
+              type="checkbox"
+              id="showPasswordCheckbox"
+              checked={showPassword}
+              onChange={handleToggleShowPassword}
+            />
+            <label htmlFor="showPasswordCheckbox">Mostrar senha</label>
+          </div>
+
+          <button type="submit" className="form-button">Entrar</button>
         </form>
-        <div className='registerText'>
-          <p>Não tem uma conta? <Link to="/cadastro" className='registerLinkButton'>Cadastre-se</Link></p>
+
+        <div className="login-links">
+          <p>Não tem uma conta? <Link to="/cadastro">Cadastre-se</Link></p>
+          <p><Link to="/recuperar-senha">Esqueceu a senha?</Link></p>
         </div>
       </div>
-      <img src={Imagem1} className='backgroundImageLogin'></img>
+
+
     </div>
   );
 };
@@ -47,5 +62,7 @@ LoginPage.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   loginData: PropTypes.object.isRequired,
+  registerDataData: PropTypes.object.isRequired,
+  showPassword: PropTypes.object.isRequired,
 }
 
