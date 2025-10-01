@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../contexts/AuthContext.jsx';
-import Logotype from '../../components/Logotype/index.jsx';
 import LoginPage from '../../components/Login/index.jsx'
 import HomePageLink from "../../components/LinkHomePage/index.jsx";
 import { toast } from 'react-hot-toast';
@@ -55,7 +54,6 @@ export default function Login() {
   return (
     <div>
       <HomePageLink />
-      <Logotype />
       <LoginPage
         loginData={loginData}
         handleChange={handleChange}

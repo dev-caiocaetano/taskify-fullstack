@@ -1,24 +1,21 @@
-.login-form-wrapper {
+.login-page-form-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 24px;
 }
 
-.login-form {
+.login-page-form {
   width: 100%;
   max-width: 400px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-top: 24px;
 }
 
-.form-group {
+.login-page-form-group {
   display: flex;
   flex-direction: column;
-  gap: 4px;
 }
 
 .form-label {
@@ -63,6 +60,62 @@
   cursor: pointer;
 }
 
+.google-login-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 16px;
+
+  background-color: #fff;
+  color: #757575;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.google-login-button:hover {
+  border-color: #ccc;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.divider-login {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 24px 0;
+  color: #aaa;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.divider-login::before,
+.divider-login::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.divider:not(:empty)::before {
+  margin-right: .5em;
+}
+
+.divider:not(:empty)::after {
+  margin-left: .5em;
+}
+
 .login-links {
   margin-top: 24px;
   text-align: center;
@@ -82,9 +135,11 @@
 }
 
 @media (min-width: 768px) {
-
   .login-form-wrapper {
     background-color: #fff;
     border-radius: 12px;
   }
+
+
+
 }

@@ -7,6 +7,7 @@ import Home from './pages/Home/Home.jsx';
 import VerificationSucessPage from './pages/VerificationSucess/VerificationSucess.jsx';
 import RecoveryPassword from './pages/RecoveryPassword/RecoveryPassword.jsx';
 import ResetPassword from './pages/ResetPassword/ResetPassword.jsx';
+import AuthCallback from './pages/AuthCallback/AuthCallback.jsx';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Route path='/verificacao-sucesso' element={<VerificationSucessPage />} />
       <Route path='/recuperar-senha' element={<RecoveryPassword />} />
       <Route path="/resetar-senha/:token" element={<ResetPassword />} />
+      <Route path="/auth/callback" element={<AuthCallback />} />
     </Routes>
   );
 };

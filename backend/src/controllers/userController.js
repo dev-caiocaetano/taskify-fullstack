@@ -194,3 +194,18 @@ export async function resetPassword(req, res) {
     message: "Nova senha cadastrada com sucesso!"
   });
 };
+
+export async function getProfile(req, res) {
+  try {
+    const user = await UserModel.findById(req.userId).select('-password');
+
+    if (!user) {
+      return res.status(404).json({ message: 'Usuário não encontrado.' });
+    }
+
+    res.json(user);
+  } catch (error) {
+    console.error("Erro ao buscar perfil do usuário:", error);
+    res.status(500).json({ message: 'Erro interno do servidor ao buscar perfil.' });
+  };
+}

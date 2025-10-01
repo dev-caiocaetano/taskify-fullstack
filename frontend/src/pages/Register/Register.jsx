@@ -59,7 +59,7 @@ export default function Register() {
         return;
       }
 
-      toast.success(messageData.message, { duration: 100000 });
+      toast.success(messageData.message, { duration: 10000 });
       navigate('/login');
 
     } catch (error) {

@@ -2,16 +2,32 @@ import 'dotenv/config';
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import session from 'express-session';
+import passport from 'passport';
 import userRoutes from './src/routes/userRoutes.js';
 import taskRoutes from './src/routes/taskRoutes.js';
+import authRoutes from './src/routes/authRoutes.js';
+import './src/config/passport-setup.js';
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/usuarios', userRoutes);
 app.use('/tarefas', taskRoutes);
+app.use('/auth', authRoutes);
 
 mongoose.connect(process.env.CONNECTION_STRING)
   .then(() => {
